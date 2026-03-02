@@ -150,20 +150,20 @@ if "api_key" not in st.session_state:
 # =============================================================================
 st.set_page_config(
     page_title="ChatGPT Clone - LangChain Memory Demo",
-    page_icon="🤖"
+    page_icon=""
 )
 
-st.markdown("# 🤖 How can I assist you?")
+st.markdown("# How can I assist you?")
 st.markdown("*LangChain Memory Module Learning Project*")
 
 
 # =============================================================================
 # Sidebar - Settings
 # =============================================================================
-st.sidebar.title("⚙️ Settings")
+st.sidebar.title("Settings")
 
 # API Key Input (like in Coursera videos)
-st.sidebar.markdown("### 🔑 API Key")
+st.sidebar.markdown("### API Key")
 api_key = st.sidebar.text_input(
     "Enter your Groq API Key:",
     type="password",
@@ -179,7 +179,7 @@ st.sidebar.markdown("---")
 # =============================================================================
 # Memory Type Selection (Core Learning Feature)
 # =============================================================================
-st.sidebar.markdown("### 🧠 Choose Memory Type")
+st.sidebar.markdown("### Choose Memory Type")
 st.sidebar.markdown("*This is the core concept of this project!*")
 
 memory_options = {
@@ -207,7 +207,7 @@ if new_memory_type != st.session_state.memory_type:
 st.sidebar.markdown("---")
 if st.session_state.memory_type == "buffer":
     st.sidebar.info("""
-    **📝 ConversationBufferMemory**
+    **ConversationBufferMemory**
     
     - Stores COMPLETE conversation history
     - All messages kept in memory
@@ -216,7 +216,7 @@ if st.session_state.memory_type == "buffer":
     """)
 else:
     st.sidebar.info("""
-    **📊 ConversationSummaryMemory**
+    **ConversationSummaryMemory**
     
     - Automatically SUMMARIZES conversation
     - Uses LLM to create running summary
@@ -229,9 +229,9 @@ st.sidebar.markdown("---")
 # =============================================================================
 # Summarization Feature
 # =============================================================================
-st.sidebar.markdown("### 📋 Summarization")
+st.sidebar.markdown("### Summarization")
 
-if st.sidebar.button("📝 Generate Summary", key="summary_btn"):
+if st.sidebar.button("Generate Summary", key="summary_btn"):
     if st.session_state.api_key and len(st.session_state.messages) > 0:
         with st.spinner("Generating summary..."):
             summary = generate_summary(st.session_state.api_key, st.session_state.messages)
@@ -247,7 +247,7 @@ st.sidebar.markdown("---")
 # =============================================================================
 # Clear Conversation
 # =============================================================================
-st.sidebar.markdown("### 🗑️ Clear Conversation")
+st.sidebar.markdown("### Clear Conversation")
 
 if st.sidebar.button("Clear Conversation", key="clear_btn"):
     if st.session_state.api_key:
@@ -263,7 +263,7 @@ if st.sidebar.button("Clear Conversation", key="clear_btn"):
 
 # Message count
 st.sidebar.markdown("---")
-st.sidebar.markdown(f"**💬 Messages:** {len(st.session_state.messages)}")
+st.sidebar.markdown(f"** Messages:** {len(st.session_state.messages)}")
 
 
 # =============================================================================
@@ -272,7 +272,7 @@ st.sidebar.markdown(f"**💬 Messages:** {len(st.session_state.messages)}")
 
 # Check for API key
 if not st.session_state.api_key:
-    st.warning("⚠️ Please enter your Groq API key in the sidebar to start chatting!")
+    st.warning("Please enter your Groq API key in the sidebar to start chatting!")
     st.info("Get your free API key at: https://console.groq.com/keys")
     st.stop()
 
